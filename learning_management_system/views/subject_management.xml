@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id ="subject_management_tree_view" model="ir.ui.view">
+		<field name="name">subject.management.tree</field>
+		<field name="model">subject.management</field>
+		<field name="arch" type="xml">
+			<tree editable="top">
+				<field name="name"/>
+				<field name="price" string="Subject price"/>
+			</tree>
+		</field>
+	</record>
+	<record id="subject_management_action" model="ir.actions.act_window">
+		<field name="name">Subject</field>
+		<field name="res_model">subject.management</field>
+		<field name="view_mode">tree</field>
+	</record>
+</odoo>

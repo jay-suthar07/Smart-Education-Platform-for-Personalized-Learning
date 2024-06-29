@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="teacher_management_treeview" model="ir.ui.view">
+		<field name="name">teacher.management.tree</field>
+		<field name="model">teacher.management</field>
+		<field name="arch" type="xml">
+			<tree>
+				<field name="teachername"/>
+				<field name="teacher_subject_ids" string="Teacher Subjects"/>
+				<field name="speaking_language"/>	
+				<field name="mode_of_teaching"/>	
+			</tree>
+		</field>
+	</record>
+	<record id="teacher_management_formview" model="ir.ui.view">
+		<field name="name">teacher.management.form</field>
+		<field name="model">teacher.management</field>
+		<field name="arch" type="xml">
+			<form>
+				<sheet>
+					<group>
+						<group>
+							<field name="teachername"/>
+							<field name="teacher_address"/>
+							<field name='mode_of_teaching'/>
+						</group>
+						<group>
+							<field name="photo" widget="image" options="{'size': [150, 150]}" string=""/>
+						</group>
+
+					</group>
+					<group>							
+						<field name="teacher_subject_ids" widget="many2many_tags"/>
+						</group>
+				</sheet>
+			</form>
+		</field>
+	</record>
+	<record id="teacher_management_action" model="ir.actions.act_window">
+		<field name="name">teacher management</field>
+		<field name="res_model">teacher.management</field>
+		<field name="view_mode">tree,form</field>
+	</record>
+</odoo>

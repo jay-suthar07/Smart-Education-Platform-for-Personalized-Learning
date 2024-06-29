@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>	
+	<record id="student_management_tree_view" model="ir.ui.view">
+		<field name="name">student.management.tree</field>
+		<field name="model">student.management</field>
+		<field name="arch" type="xml">
+			<tree>
+				<field name="student_name"/>
+				<field name="gender"/>
+				<field name="enrollment_number"/>
+			</tree>
+		</field>
+	</record>
+	<record id="test_form" model="ir.ui.view">
+		<field name="name">test.form</field>
+		<field name="model">student.management</field>
+		<field name="arch" type="xml">
+			<form>
+				<sheet>
+					<group>
+						<group>
+							<field name="student_name"/>
+							<field name="birthdate"/>
+						</group>
+						<group>
+							<field name="enrollment_number"/>
+							<field name="course_plan_id"/>
+							<field name="course_plan_price"/>
+						</group>
+					</group>
+					<group>
+						<field name="address"/>
+					</group>
+					<group>
+						<group>
+							<field name="student_course_ids" />
+							<field name="gender"/>
+							<field name="student_course_details_ids" widget="many2mant_tags"/>
+						</group>
+						<group>
+							<field name="speaking_language"/>
+							<field name="student_image"/>
+						</group>
+					</group>
+				</sheet>
+			</form>
+
+		</field>
+	</record>
+	<record id="student_management_view" model="ir.ui.view">
+		<field name="name">student.management.form</field>
+		<field name="model">student.management</field>
+		<field name="arch" type="xml">
+			<kanban  class='o_kanban_mobile'>
+				<field name="student_name"/>
+				<field name="gender"/>
+				<field name="enrollment_number"/>
+				<field name="birthdate"/>
+				<field name="address"/>
+				<field name="speaking_language"/>
+				<field name="student_image" widget="Image"/>
+				<field name="student_course_ids"/>
+				<templates>
+					<t t-name="kanban-box">
+								<div class="oe_kanban_global_click">
+									<div class="oe_kanban_details">
+										<div class="row">
+											<div class="col-3">
+												<div class="oe_kanban_image">
+													 <img t-att-src="kanban_image('student.management', 				'student_image',record.id.raw_value)" 	hieght="80" 	width="80"/>	
+												</div>
+											</div>
+											<div  class="col-9">
+												<div>
+													<span style="font-weight: bold"> Enrollment: </span>
+													<field name="enrollment_number"/>
+												</div>
+												<div>
+													<span style="font-weight: bold"> Name: </span>
+													<field name="student_name"/>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+					</t>
+				</templates>
+			</kanban>
+		</field>
+	</record>
+	<record id="student_management_action" model="ir.actions.act_window">
+		<field name="name">Student</field>
+		<field name="res_model">student.management</field>
+		<field name="view_mode">tree,form,kanban</field>
+		<!-- <field name="domain">[('offline_learning_id.teacher_subject_offline', '=', 'student_course_details')]</field> -->
+	</record>
+</odoo>

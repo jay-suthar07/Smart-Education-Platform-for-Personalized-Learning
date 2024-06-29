@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<menuitem id ="leaning_management_menu_root" name="Learning Management"/>
+	
+	<menuitem id ="learning_management_course_catalog_menu" name="Learning" parent="leaning_management_menu_root"/>
+	
+	<menuitem id ="Learning_management_online_menu" name="Online learning" parent="learning_management_course_catalog_menu" action="leaning_management_online_action"/>
+	
+	<menuitem id ="Learning_management_offline_menu" name="Offline learning" parent="learning_management_course_catalog_menu" action="leaning_management_offline_action"/>
+	
+	<menuitem id="student_management_menu" name="Manage Student" action="student_management_action" parent="leaning_management_menu_root"/>
+
+	<menuitem id="teacher_management_menu" name="Manage teacher" action="teacher_management_action" parent="leaning_management_menu_root"/>
+
+	<menuitem id="course_management_menu" name="Course" parent="leaning_management_menu_root">
+		<menuitem id="subject_management_menu" name="Subjects" action="subject_management_action"/>
+		<menuitem id="Subject_corse_management_menu" name="Manage Course" action="course_management_action"/>
+		<menuitem id="course_plan_management_menu" name="Course plan" action="course_plan_action"/>
+	</menuitem>
+	
+	<menuitem id="schedule_manage_menu" name="Schedules" action="schedule_management_action" parent="leaning_management_menu_root"/>
+
+</odoo>

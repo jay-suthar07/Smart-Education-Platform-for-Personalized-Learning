@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="leaning_management_offline_view_form" model='ir.ui.view'>
+		<field name="name">learning.management.online.form</field>
+		<field name="model">learning.management.offline</field>
+		<field name="arch" type='xml'>
+			<form>
+				<header>
+					<button name='schedulebutton' type="object" string="Schedule" invisible="state=='scheduled'"/>
+					<button name='cancelbutton'  type="object" string="Cancel" invisible="state=='scheduled'"/>
+					<field name="state" widget="statusbar"  />
+				</header>
+				<sheet>
+					<div class="oe_button_box" name="button_box">
+                        <button class="oe_stat_button" name="action_open_student_details" type="object" icon="fa-users">
+                        	<div class="o_stat_info">
+								<span class="o_stat_value">
+                                    <field name="count_allocated_students"/>
+                                </span> 
+                                <span class="o_stat_text">
+                                    Allocated Students
+                                </span>
+                            </div>
+                        </button>
+                    </div>
+					<group>
+						<group>
+							<field name='teachername_offline'/>
+							<field name='state' invisible='1'/>
+							<!-- <field name='studentname'/> -->
+							<field name='teacher_subject_offline_ids' widget="many2many_tags" options="{'no_create': True}"/>
+						</group>
+						<group>
+							
+						</group>
+
+					</group>
+					<group>
+						<field name='start_time' type="measure" widget="float_time"/>
+						<!-- type="measure" widget="float_time" -->
+						<field name='end_time' type="measure" widget="float_time"/>
+						<field name='duration' type="measure" widget="float_time"/>
+					</group>
+				</sheet>
+				<div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+			</form>	
+		</field>
+	</record>
+		<record id="learning_management_offline_view_tree" model="ir.ui.view">
+		<field name="name">learning.management.offline.tree</field>
+		<field name="model">learning.management.offline</field>
+		<field name="arch" type="xml">
+			<tree >
+				<field name='teachername_offline'/>
+				<field name='teacher_subject_offline_ids' widget="many2many_tags"/>
+			</tree>
+		</field>
+	</record>
+	<record id ="leaning_management_offline_action" model="ir.actions.act_window">
+		<field name="name">learning offline Management</field>
+		<field name="res_model">learning.management.offline</field>
+		<field name="view_mode">tree,form</field>
+	</record>
+</odoo>
